@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-24 10:18+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\cart\forms.py:7
+msgid "Quantity"
+msgstr ""
+
+#: .\myshop\settings.py:117
+msgid "English"
+msgstr ""
+
+#: .\myshop\settings.py:118
+msgid "German"
+msgstr ""
+
+#: .\myshop\settings.py:119
+msgid "Swedish"
+msgstr ""
+
+#: .\myshop\settings.py:120
+msgid "Greek"
+msgstr ""
+
+#: .\myshop\urls.py:24
+msgid "admin/"
+msgstr ""
+
+#: .\myshop\urls.py:25
+msgid "cart/"
+msgstr ""
+
+#: .\myshop\urls.py:26
+msgid "orders/"
+msgstr ""
+
+#: .\shop\templates\shop\base.html:7 .\shop\templates\shop\base.html:12
+msgid "My shop"
+msgstr ""
+
+#: .\shop\templates\shop\base.html:18
+msgid "Your cart"
+msgstr ""
+
+#: .\shop\templates\shop\base.html:20
+#, python-format
+msgid ""
+"\n"
+"\t\t\t\t\t\t\t%(total_items)s item%(total_items_plural)s,\n"
+"\t\t\t\t\t\t\t$%(total_price)s\n"
+"\t\t\t\t\t\t"
+msgstr ""
+
+#: .\shop\templates\shop\base.html:26
+msgid "Your cart is empty."
+msgstr ""
+
+#: .\shop\templates\shop\product\detail.html:19
+msgid "Add to cart"
+msgstr ""

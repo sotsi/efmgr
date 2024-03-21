@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<head>
+  <meta charset="utf-8"/>
+  <meta content="text/html;charset=UTF-8" http-equiv="Content-type"/>
+  <style>
+body {font-family: Verdana;}
+table.dataTable {width: auto !important; margin: 0 !important;}
+.dataTables_filter, .dataTables_paginate {float: left !important; margin-left:1em}
+  </style>
+  <link href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+  </script>
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js">
+  </script>
+</head>
+<script>
+	var astropy_sort_num = function(a, b) {
+		var a_num = parseFloat(a);
+		var b_num = parseFloat(b);
+
+		if (isNaN(a_num) && isNaN(b_num))
+			return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+		else if (!isNaN(a_num) && !isNaN(b_num))
+			return ((a_num < b_num) ? -1 : ((a_num > b_num) ? 1 : 0));
+		else
+			return isNaN(a_num) ? -1 : 1;
+	}
+
+	jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+		"optionalnum-asc": astropy_sort_num,
+		"optionalnum-desc": function (a,b) { return -astropy_sort_num(a, b); }
+	});
+
+	$(document).ready(function() {
+		$('#table251603936').dataTable({
+			order: [],
+			pageLength: 50,
+			lengthMenu: [[10, 25, 50, 100, 500, 1000, -1], [10, 25, 50, 100, 500, 1000, 'All']],
+			pagingType: "full_numbers",
+			columnDefs: [{targets: [0, 1], type: "optionalnum"}]
+		});
+	} ); 
+</script>
+	<div align=center">
+	<h2>Παρακολούθηση ΦΒ συστήματος</h2>
+	
+	{% if request.user.is_authenticated %}
+			Χρήστης: {{ request.user.first_name }} {{ request.user.last_name }} <br>
+			<p>
+			<div class="split left">
+			<div class="centered">
+			<form >
+				<button type="submit">Ανανέωση αποτελέσματος</button>
+				{% csrf_token %}
+				{{ form.as_p }}
+			</form>
+			
+			</div>
+			</div>
+			<div class="split right">
+			<div class="centered">
+			<table style="width:30%">
+				<thead>
+					<tr>
+						<th>Α/Α Συστοιχίας</th>
+						<th>Χαρακτηριστικά</th>
+					</tr>
+				</thead>
+				{% for pvi in pvs %}
+					<tr align="left">
+						<td>{{ forloop.counter }}</td>
+						<td>{{ pvi }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+			</div>
+			</div>
+			</p>
+	{% else %}
+		<a href="{% url 'login' %}">Log-in	</a>
+	{% endif %}
+	
+	</div>
+	
+{% endblock %}
